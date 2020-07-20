@@ -28,8 +28,8 @@ clean:
 
 main.o: buzzer.h switches.h led.h 
 led.o: switches.h led.h
-switches.o: switches.h buzzer.h led.h scales.h
-wd_inthandlr.o: switches.h scales.h
+switches.o: switches.h buzzer.h led.h
+wd_inthandlr.o: switches.h
 
 
 
