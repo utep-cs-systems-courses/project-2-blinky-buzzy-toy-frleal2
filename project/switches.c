@@ -11,7 +11,7 @@ switch_update_interrupt_sense()
   /* update switch interrupt to detect changes from current buttons */
   P2IES |= (p2val & SWITCHES);	/* if switch up, sense down */
   P2IES &= (p2val | ~SWITCHES);	/* if switch down, sense up */
-  return p1val;
+  return p2val;
 }
 
 void 
