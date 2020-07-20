@@ -11,10 +11,10 @@ AS              = msp430-elf-as
 all: button.elf 
 
 #additional rules for files
-button.elf: ${COMMON_OBJECTS}p2_interrupt_handler.o led.o switches.o main.o ../demos/lib/libTimer.a
+button.elf: ${COMMON_OBJECTS}p2_interrupt_handler.o led.o switches.o main.o ../lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
-buttonA.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o led.o switches.o main.o ../demos/lib/libTimer.a
+buttonA.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o led.o switches.o main.o ../lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 loadA: buttonA.elf
