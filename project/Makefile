@@ -26,9 +26,9 @@ load: button.elf
 clean:
 	rm -f *.o *.elf
 
-main.o: buzzer.h switches.h led.h 
+main.o: switches.h led.h 
 led.o: switches.h led.h
-switches.o: switches.h buzzer.h led.h
+switches.o: switches.h led.h
 wd_inthandlr.o: switches.h
 
 
