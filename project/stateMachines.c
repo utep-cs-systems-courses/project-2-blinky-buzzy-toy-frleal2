@@ -5,21 +5,48 @@
 #include "switches.h"
 #include "timerLib/libTimer.h"
 
+unsigned char toggle_led;
+
 void state_init(){
   state = 0;
-  
+  toggle_led = (toggle_led & LED_RED) ? LED_GREEN : LED_RED;
+  led_update();
 }
 
 void state_advance()		/* alternate between toggling red & green */
 {
-  char changed = 0;  
+  switch (state)
+  {
+  case 0:
+    toggle_led = LED_RED;
+    if(switch1_state_down){
+      state = 1;
+    }
+    break;
+  case 1:
+    toggle_led = LED_GREEN;
+    if(switch1_state_down){
+      state = 2;
+    }
+    break;
+  case 2:
+    toggle_led = LED_RED;
+    if (switch1_state_down){
+      state = 3;
+    }
+    break;
+  case 3: 
+    toggle_led = LED_RED;
+    toggle_led = LED_GREEN;
+    if (switch1_state_down)
+    {
+      state = 4;
+    }
+    break;
 
-  static enum {R=0, G=1} color = G;
-  switch (color) {
-  case R: changed = toggle_red(); color = G; break;
-  case G: changed = toggle_green(); color = R; break;
+  default:
+    break;
   }
-
-  led_changed = changed;
+  
   led_update();
 }
