@@ -8,8 +8,7 @@ void main(void)
   configureClocks();
   switch_init();
   led_init();
-  //buzzer_init();
-  enableWDTInterrupts();
+  //enableWDTInterrupts();
 
   state_init();
 
