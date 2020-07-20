@@ -20,7 +20,7 @@ loadTimer:
 load: loadTimer main.elf
 	msp430loader.sh main.elf
 
-clean
+clean:
 	rm -f *.o *.elf	
 	(cd timerLib && make clean)
 
