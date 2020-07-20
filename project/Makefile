@@ -11,13 +11,13 @@ AS              = msp430-elf-as
 all: button.elf
 
 
-main.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o stateMachines.o led.o main.o timerLib/Libtimer.a
+main.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o stateMachines.o led.o main.o ../timerLib/Libtimer.a
 		${CC} ${CFLAGS} ${LDFLAGS} - o $@ $^
 
 loadTimer:
 	(cd timerLib && make all)
 
-load: loadTimer main.elf
+load: main.elf
 	msp430loader.sh main.elf
 
 clean:
