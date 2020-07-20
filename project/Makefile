@@ -8,31 +8,21 @@ LDFLAGS		= -L/opt/ti/msp430_gcc/include
 CC              = msp430-elf-gcc
 AS              = msp430-elf-as
 
-install:
-	(cd./timerLib; make install)
+all: button.elf
 
-all: button.elf 
 
-#additional rules for files
-button.elf: ${COMMON_OBJECTS}main.o p2_interrupt_handler.o led.o switches.o  ./timerLib/libTimer.a
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
+main.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o stateMachines.o led.o main.o timerLib/Libtimer.a
+		${CC} ${CFLAGS} ${LDFLAGS} - o $@ $^
 
-buttonA.elf: ${COMMON_OBJECTS} main.o p2_interrupt_handler.o led.o switches.o ./timerLib/libTimer.a
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
+loadTimer:
+	(cd timerLib && make all)
 
-loadA: buttonA.elf
-	mspdebug rf2500 "prog buttonA.elf"
+load: loadTimer main.elf
+	msp430loader.sh main.elf
 
-load: button.elf
-	mspdebug rf2500 "prog button.elf"
-
-clean:
-	rm -f *.o *.elf
-
-main.o: switches.h led.h 
-led.o: switches.h led.h
-switches.o: switches.h led.h
-p2_interrupt_handler.o: switches.h
+clean
+	rm -f *.o *.elf	
+	(cd timerLib && make clean)
 
 
 
