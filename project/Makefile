@@ -11,10 +11,10 @@ AS              = msp430-elf-as
 all: button.elf 
 
 #additional rules for files
-button.elf: ${COMMON_OBJECTS}wd_inthandlr.o led.o switches.o bbmain.o ../timerLib/libTimer.a
+button.elf: ${COMMON_OBJECTS}wd_inthandlr.o led.o switches.o main.o ../timerLib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
-buttonA.elf: ${COMMON_OBJECTS} wd_inthandlr.o led.o switches.o bbmain.o ../timerLib/libTimer.a
+buttonA.elf: ${COMMON_OBJECTS} wd_inthandlr.o led.o switches.o main.o ../timerLib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 loadA: buttonA.elf
