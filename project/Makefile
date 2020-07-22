@@ -17,7 +17,7 @@ switches.o: switches.h switches.c
 
 stateMachines.o: stateMachines.h stateMachines.c
 
-p2_interrupt_handler.o: p2_interrupt_handler.h p2_interrupt_handler.c
+p2_interrupt_handler.o: p2_interrupt_handler.c
 
 buzzer.o: buzzer.h buzzer.c
 
