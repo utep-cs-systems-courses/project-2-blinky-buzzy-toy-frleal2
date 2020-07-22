@@ -8,21 +8,22 @@ LDFLAGS		= -L/opt/ti/msp430_gcc/include
 CC              = msp430-elf-gcc
 AS              = msp430-elf-as
 
-all: button.elf
+all: button.elf 
 
-
-main.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o stateMachines.o led.o main.o ../timerLib/Libtimer.a
-		${CC} ${CFLAGS} ${LDFLAGS} - o $@ $^
+#additional rules for files
+main.elf: ${COMMON_OBJECTS} stateMachines.o p2_interrupt_handler.o led.o switches.o main.o timerLib/libTimer.a
+	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 loadTimer:
 	(cd timerLib && make all)
 
-load: main.elf
+load: loadTimer main.elf
 	msp430loader.sh main.elf
 
 clean:
-	rm -f *.o *.elf	
+	rm -f *.o *.elf
 	(cd timerLib && make clean)
+
 
 
 
