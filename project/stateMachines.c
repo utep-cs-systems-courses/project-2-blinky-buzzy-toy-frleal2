@@ -25,6 +25,7 @@ void state_advance(){
   case 4:
     toggle_led = 0;
     break;
+  default: break;
   }
   led_update(); //after the state is set it will update the leds accordingly
 }
