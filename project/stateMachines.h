@@ -1,7 +1,7 @@
 #ifndef stateMachine_included
 #define stateMachine_included
 
-extern unsigned char switch_state;
+extern int switch_state;
 void state_init();
 void state_advance();
 
