@@ -43,5 +43,15 @@ char switch_interrupt_handler(){
     switch_state = 2;
     state_advance();
   }
+
+  if(sw3_state_down){
+    switch_state = 3;
+    state_advance();
+  }
+
+  if(sw4_state_down){
+    switch_state = 4;
+    state_advance();
+  }
   
 }
