@@ -16,19 +16,19 @@ void state_advance(){
   switch (switch_state){
   case 1:
     toggle_led = LED_GREEN;
-    buzzer_set_period(750);
+    play_note();
     break;
   case 2:
     toggle_led = LED_RED;
-    buzzer_set_period(50);
+    play_note();
     break;
   case 3:
     toggle_led = LED_GREEN | LED_RED;
-    buzzer_set_period(25);
+    play_note();
     break;
   case 4:
     toggle_led = 0;
-    buzzer_set_period(20);
+    play_note();
     break;
   default: break;
   }
