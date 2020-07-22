@@ -16,7 +16,7 @@ void state_advance(){
   switch (switch_state){
   case 1:
     toggle_led = LED_GREEN;
-    buzzer_set_period(100);
+    buzzer_set_period(750);
     break;
   case 2:
     toggle_led = LED_RED;
