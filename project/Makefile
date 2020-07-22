@@ -17,9 +17,11 @@ switches.o: switches.h switches.c
 
 stateMachines.o: stateMachines.h stateMachines.c
 
+p2_interrupt_handler.0: p2_interrupt_handler.h p2_interrupt_handler.c
+
 buzzer.o: buzzer.h buzzer.c
 
-project.elf: main.o led.o stateMachines.o switches.o buzzer.o ./lib/libTimer.a
+project.elf: main.o led.o stateMachines.o p2_interrupt_handler.o switches.o buzzer.o ./lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 all: project.elf
