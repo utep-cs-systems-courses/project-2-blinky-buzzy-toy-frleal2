@@ -23,7 +23,7 @@ wdInterruptHandler.o: wdInterruptHandler.c
 
 buzzer.o: buzzer.h buzzer.c
 
-project.elf: wdInterruptHandler.o p2_interrupt_handler.o main.o led.o stateMachines.o switches.o buzzer.o ./lib/libTimer.a
+project.elf: wdInterruptHandler.o p2_interrupt_handler.o main.o led.o buzzer.o stateMachines.o switches.o ./lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 all: project.elf

@@ -9,6 +9,7 @@ int main(){
   
   switch_init();
   led_init();
+  buzzer_init();
   
   state_init();
   enableWDTInterrupts();
