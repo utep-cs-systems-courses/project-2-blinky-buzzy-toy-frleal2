@@ -4,8 +4,9 @@
 //#include "buzzer.h"
 #include "stateMachines.h"
 
-char sw1_state,sw2_state,sw3_state,sw4_state;
-char switch_state_down, switch_state_changed; // effectively boolean
+char sw1_state_down,sw2_state_down,sw3_state_down,sw4_state_down;
+int switch_state;
+//char switch_state_down, switch_state_changed; // effectively boolean
 
 
 static char switch_update_interrupt_sense() {
@@ -27,7 +28,7 @@ switch_init(){
 
 char switch_interrupt_handler(){
   char p2val = switch_update_interrupt_sense();
-  
+
   sw1_state_down = (p2val & SW1) ? 0 : 1; /* 0 when SW1 is up */
   sw2_state_down = (p2val & SW2) ? 0 : 1; /* 0 when SW2 is up */
   sw3_state_down = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
