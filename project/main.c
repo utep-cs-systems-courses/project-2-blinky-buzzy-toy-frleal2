@@ -34,7 +34,7 @@ void static stateAdv(){
       red_on = 0; green_on = 0;
       state = S1;
   }
-  led_changed = 1;
+  leds_changed = 1;
   led_update();
 
 }
