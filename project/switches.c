@@ -5,7 +5,7 @@
 #include "stateMachines.h"
 
 char sw1_state_down,sw2_state_down,sw3_state_down,sw4_state_down;
-int switch_state;
+int switch_state = 0;
 //char switch_state_down, switch_state_changed; // effectively boolean
 
 
@@ -36,6 +36,11 @@ char switch_interrupt_handler(){
 
   if(sw1_state_down){
     switch_state = 1;
+    state_advance();
+  }
+
+  if(sw2_state_down){
+    switch_state = 2;
     state_advance();
   }
   
