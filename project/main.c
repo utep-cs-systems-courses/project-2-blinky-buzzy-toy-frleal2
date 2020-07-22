@@ -10,8 +10,10 @@ int main(){
   //buzzer_init();
   //buzzer_set_period(0);
   led_init();
+
+  state_init();
   
-  enableWDTInterrupts();
+  //enableWDTInterrupts();
   or_sr(0x18);
 }
   
