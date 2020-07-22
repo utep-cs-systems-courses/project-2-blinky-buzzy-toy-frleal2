@@ -4,6 +4,8 @@
 #include "switches.h"
 
 void state_init(){
+  red_on = 1;
+  green_on = 0;
   switch_state = 0;
 }
 
