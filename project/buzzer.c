@@ -26,7 +26,7 @@ void buzzer_set_period(short cycles) /* buzzer clock = 2MHz.  (period of 1k resu
 
 void play_note(){
 
-    buzzer_set_period(750);
+    buzzer_set_period(1000);
     //__delay_cycles(5000000);
     buzzer_set_period(0);
     return;
