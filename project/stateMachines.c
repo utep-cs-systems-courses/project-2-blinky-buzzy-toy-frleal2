@@ -7,6 +7,7 @@ void state_init(){
   red_on = 1;
   green_on = 0;
   switch_state = 0;
+  led_update();
 }
 
 void state_advance(){
@@ -14,19 +15,23 @@ void state_advance(){
   case 1:
     red_on = 1;
     green_on = 0;
+    led_update();
     break;
   case 2:
     red_on = 1;
     green_on = 1;
+    led_update();
     break;
   case 3:
     red_on = 0;
     green_on = 1;
+    led_update();
     break;
   case 4:
     red_on = 0;
     green_on = 0;
+    led_update();
     break;
   }
-  led_update(); //after the state is set it will update the leds accordingly
+  //led_update(); //after the state is set it will update the leds accordingly
 }
