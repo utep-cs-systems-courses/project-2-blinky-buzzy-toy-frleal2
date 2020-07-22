@@ -14,7 +14,7 @@ void state_init(){
 void state_advance(){
   switch (switch_state){
   case 1:
-    toggle_led = LED_RED;
+    toggle_led = LED_GREEN;
     break;
   case 2:
     toggle_led = LED_GREEN;
