@@ -34,24 +34,7 @@ char switch_interrupt_handler(){
   sw3_state_down = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
   sw4_state_down = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
 
-  if (sw1_state_down)
-  {
-    switch_state = 1;
-    state_advance();
-  }
-  if (sw2_state_down)
-  {
-    switch_state = 2;
-    state_advance();
-  }
-  if (sw3_state_down)
-  {
-    switch_state = 3;
-    state_advance();
-  }
-  if (sw4_state_down)
-  {
-    switch_state = 4;
+  if(sw1_state_down){
     state_advance();
   }
   
