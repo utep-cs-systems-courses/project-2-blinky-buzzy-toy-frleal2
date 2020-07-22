@@ -5,10 +5,10 @@
 #include "buzzer.h"
 
 int main(){
-  switch_init();
   configureClocks();
-  buzzer_init();
-  buzzer_set_period(0);
+  switch_init();
+  //buzzer_init();
+  //buzzer_set_period(0);
   led_init();
   
   enableWDTInterrupts();

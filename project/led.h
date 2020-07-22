@@ -1,6 +1,4 @@
 #ifndef led_included
-#define led_included
-#ifndef led_included
 #define  led_included
 
 #include <msp430.h>
