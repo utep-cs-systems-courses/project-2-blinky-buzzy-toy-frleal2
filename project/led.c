@@ -12,7 +12,6 @@ static char redVal[] = {0, LED_RED}, greenVal[] = {0, LED_GREEN};
 void led_init()
 {
   P1DIR |= LEDS;		// bits attached to leds are output
-  //char ledFlags = redVal[red_on] | greenVal[green_on];
   led_update();
 }
 
@@ -20,21 +19,27 @@ void led_update(){
   char ledFlags =0;
 
   if (switch_state == 1){
-    char ledFlags = redVal[red_on] | greenVal[green_on];
+    char ledFlags = 0;
+
+    ledFlags = toggle_led;
     
     P1OUT &= (0xff^LEDS) | ledFlags; // clear bit for off leds
     P1OUT |= ledFlags;		     // set bit for on leds
   }
 
   if (switch_state == 2){
-    char ledFlags = redVal[red_on] | greenVal[green_on];
+    char ledFlags = 0;
+
+    ledFlags = toggle_led;
     
     P1OUT &= (0xff^LEDS) | ledFlags; // clear bit for off leds
     P1OUT |= ledFlags;		     // set bit for on leds
   }
   
   if (switch_state == 3){
-    char ledFlags = redVal[red_on] | greenVal[green_on];
+    char ledFlags = 0;
+
+    ledFlags = toggle_led;
     
     P1OUT &= (0xff^LEDS) | ledFlags; // clear bit for off leds
     P1OUT |= ledFlags;		     // set bit for on leds
