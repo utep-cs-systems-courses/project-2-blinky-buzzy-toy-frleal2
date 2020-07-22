@@ -7,7 +7,6 @@
 char sw1_state,sw2_state,sw3_state,sw4_state;
 char switch_state_down, switch_state_changed; // effectively boolean
 
-switch_state = 0;
 
 static char switch_update_interrupt_sense() {
   char p1val = P1IN;
