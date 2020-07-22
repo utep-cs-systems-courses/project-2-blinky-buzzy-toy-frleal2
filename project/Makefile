@@ -1,29 +1,35 @@
 # makfile configuration
-COMMON_OBJECTS  = 
-CPU             = msp430g2553
-CFLAGS          = -mmcu=${CPU} -I../h
-LDFLAGS		= -L/opt/ti/msp430_gcc/include
+COMMON_OBJECTS =
+CPU            = msp430g2553
+CFLAGS         = -mmcu=${CPU} -Os -I../h
+LDFLAGS        = -L/lib -L/opt/ti/msp430_gcc/include
 
 #switch the compiler (for the internal make rules)
-CC              = msp430-elf-gcc
-AS              = msp430-elf-as
+CC             = msp430-elf-gcc
+AS             = msp430-elf-gcc - mmcu=${CPU} -c
 
-all: button.elf 
+install:
+	(cd ./timerLib; make install)
 
-#additional rules for files
-main.elf: ${COMMON_OBJECTS} stateMachines.o p2_interrupt_handler.o led.o switches.o main.o lib/libTimer.a
+led.o: led.h led.c
+
+switches.o: switches.h switches.c
+
+buzzer.o: buzzer.h buzzer.c
+
+project.elf: main.o led.o switches.o buzzer.o ./lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
-loadTimer:
-	(cd timerLib && make all)
+all: project.elf
 
-load: loadTimer main.elf
-	msp430loader.sh main.elf
+load: project.elf
+	mspdebug rf2500 "prog $^"
 
 clean:
-	rm -f *.o *.elf
-	(cd timerLib && make clean)
-
+	(cd timerLib; make clean)
+	rm -rf lib h lib h
+	rm -rf doxygen_docs/*
+	rm -rf doxygen_docs/*rm -f *.o *.elf
 
 
 
