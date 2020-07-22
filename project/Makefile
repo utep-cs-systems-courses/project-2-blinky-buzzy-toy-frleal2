@@ -15,9 +15,11 @@ led.o: led.h led.c
 
 switches.o: switches.h switches.c
 
+stateMachines.o: stateMachines.h stateMachines.c
+
 buzzer.o: buzzer.h buzzer.c
 
-project.elf: main.o led.o switches.o buzzer.o ./lib/libTimer.a
+project.elf: main.o led.o stateMachines.o switches.o buzzer.o ./lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 all: project.elf
