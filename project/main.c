@@ -11,6 +11,7 @@ int main(){
   led_init();
   
   state_init();
+  enableWDTInterrupts();
   
   or_sr(0x18);
 }
